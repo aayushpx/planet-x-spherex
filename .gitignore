@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Generated data
+data/*
+!data/samples/
+!data/samples/README.md
+
+# FITS and large astronomy data
+*.fits
+*.fits.gz
+*.fit
+*.fts
+
+# Build outputs
+build/
+dist/
+bin/
+obj/
+
+# IDEs
+.idea/
+.vscode/
+.DS_Store

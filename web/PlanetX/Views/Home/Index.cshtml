@@ -2,8 +2,105 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <div id="viewer-container" style="width: 100%; height: 600px;"></div>
+<!-- Full-screen Three.js canvas -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- Centered tabbed forms overlay -->
+<div id="form-overlay" class="form-overlay">
+    <div class="form-card">
+        <!-- Tab Navigation -->
+        <div class="form-tabs" role="tablist">
+            <button class="form-tab active" role="tab" data-tab="object-name" aria-selected="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span>Object Name</span>
+            </button>
+            <button class="form-tab" role="tab" data-tab="coordinates" aria-selected="false">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="2" x2="12" y2="6"></line>
+                    <line x1="12" y1="18" x2="12" y2="22"></line>
+                    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                    <line x1="2" y1="12" x2="6" y2="12"></line>
+                    <line x1="18" y1="12" x2="22" y2="12"></line>
+                    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                    <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                </svg>
+                <span>Coordinates</span>
+            </button>
+        </div>
+
+        <!-- Tab Panels -->
+        <div class="form-panels">
+            <!-- Form 1: Object Name -->
+            <div class="form-panel active" role="tabpanel" data-tab="object-name">
+                <h2>Search by Object Name</h2>
+                <form id="object-name-form" class="search-form">
+                    <div class="form-group">
+                        <label for="object-name-input">Object Name</label>
+                        <input 
+                            type="text" 
+                            id="object-name-input" 
+                            name="objectName" 
+                            placeholder="e.g., Andromeda, M31, NGC 224"
+                            autocomplete="off"
+                            required
+                        >
+                        <div class="input-hint">Enter a common name, Messier, or NGC designation</div>
+                    </div>
+                    <button type="submit" class="btn-search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <span>Search</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Form 2: RA/Dec Coordinates -->
+            <div class="form-panel" role="tabpanel" data-tab="coordinates">
+                <h2>Search by Coordinates</h2>
+                <form id="coordinates-form" class="search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ra-input">Right Ascension</label>
+                            <input 
+                                type="text" 
+                                id="ra-input" 
+                                name="ra" 
+                                placeholder="HH:MM:SS.s"
+                                autocomplete="off"
+                                required
+                            >
+                            <div class="input-hint">Hours:Minutes:Seconds</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dec-input">Declination</label>
+                            <input 
+                                type="text" 
+                                id="dec-input" 
+                                name="dec" 
+                                placeholder="±DD:MM:SS.s"
+                                autocomplete="off"
+                                required
+                            >
+                            <div class="input-hint">Degrees:Minutes:Seconds</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <span>Search</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script type="module" src="~/js/display.js" asp-append-version="true"></script>
